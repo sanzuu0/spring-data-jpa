@@ -1,0 +1,20 @@
+# Удалите или закомментируйте следующую строку
+# version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17.2
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database
+    ports:
+      - "13299:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../../dump/database_dump.sql:/docker-entrypoint-initdb.d/database_dump.sql
+
+volumes:
+  db_data:

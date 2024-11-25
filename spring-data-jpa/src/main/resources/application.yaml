@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://loacalhost:13300/data-jpa
+    username: user
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog/db-changelog.xml
+
+  docker:
+    compose:
+      skip:
+        in-tests: false
